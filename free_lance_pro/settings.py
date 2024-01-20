@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'free_lance_app',
     'admin_object_actions',
+    'jobs_app',
 ]
 
 MIDDLEWARE = [
