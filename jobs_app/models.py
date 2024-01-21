@@ -10,20 +10,20 @@ class Referencias(models.Model):
     
 
 class Jobs(models.Model):
-    categoria_choices = (('D', 'Design'),
-                         ('EV', 'Edição de Vídeo'))
+    categoria_choices = (('FE', 'Front-end'),
+                         ('BE', 'Back-end'))
     status_choices = (('C', 'Em criação'),
                       ('AA', 'Aguardando aprovação'),
                       ('F', 'Finalizado'))
     titulo = models.CharField(max_length=200)
     descricao = models.TextField()
-    categoria = models.CharField(max_length=2, choices=categoria_choices, default="D")
+    categoria = models.CharField(max_length=2, choices=categoria_choices, default="FE")
     prazo_entrega = models.DateTimeField()
     preco = models.FloatField()
     referencias = models.ManyToManyField(Referencias)
     profissional = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True, blank=True)
     reservado = models.BooleanField(default=False)
-    status = models.CharField(max_length=2, default='AA')
+    status = models.CharField(max_length=2, choices=status_choices, default='AA')
 
     def __str__(self) -> str:
         return self.titulo
