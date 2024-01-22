@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+
+{% endblock %}
+
+{% block 'body' %}
+    {% if messages %} 
+        {% for message in messages %}
+            <div class="alert {{message.tags}}"> 
+                {{message}} 
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="box">
+        
+        <form action='{% url 'cadastro' %}' method='POST'>{% csrf_token %}
+            <h1 class="titulo font-degrade borda-bottom-degrade">INSCREVA-SE</h2>
+            <br>
+            <span class="span-descricao">Usuário:</span>
+            <input type="text" class="form-control input-cadastro" name="username">
+            <br>
+            <span class="span-descricao">Email</span>
+            <input type="email" class="form-control input-cadastro" name="email">
+            <br>
+            <span class="span-descricao">Senha:</span>
+            <input type="password" class="form-control input-cadastro" name="password">
+            <br>
+            <input type="submit" value="CADASTRAR" class="btn btn-success btn-lg">
+            <a href="{% url 'logar' %}" class="btn btn-primary btn-lg">LOGIN</a>
+        </form>
+    </div>
+{% endblock %} 
